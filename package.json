@@ -1,0 +1,37 @@
+{
+  "name": "stateofchain_client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "watch": "parcel watch app/assets/javascripts/application.js -d app/assets/javascripts/bundled --no-cache",
+    "build": "NODE_ENV=production parcel build app/assets/javascripts/application.js -d app/assets/javascripts/bundled --no-cache"
+  },
+  "dependencies": {
+    "actioncable": "^5.2.1-1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "bclient": "^0.1.5",
+    "rails-ujs": "^5.2.1-1",
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
+    "react-dom": "^16.4.1",
+    "react-modal": "^3.5.1",
+    "react_ujs": "^2.4.4",
+    "recompose": "^0.30.0",
+    "sanitize.css": "^8.0.0",
+    "tiny-slider": "^2.8.8",
+    "turbolinks": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.1.6",
+    "@babel/plugin-transform-runtime": "7.1.0",
+    "autoprefixer": "^8.3.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "node-sass": "^4.8.3",
+    "parcel-bundler": "^1.8.1",
+    "postcss-cli": "^5.0.0",
+    "postcss-flexbugs-fixes": "^3.3.0",
+    "postcss-modules": "^1.1.0",
+    "posthtml-include": "^1.1.0"
+  }
+}

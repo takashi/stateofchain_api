@@ -1,0 +1,51 @@
+.ProjectSingle {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  width: 800px;
+  margin: 0 auto;
+  box-shadow: rgba($brand-color, 0.1) 0 5px 20px;
+  margin-top: 3rem;
+
+  &__author {
+    display: flex;
+    margin-bottom: 1rem;
+    img {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 2.5rem;
+    }
+
+    p {
+      line-height: 2rem;
+      margin-left: 1rem;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: $brand-color;
+  }
+
+  &__description {
+    font-size: .9rem;
+    line-height: 1.6;
+    color: $secondary-font-color;
+  }
+
+  &__fund {
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(25deg, $brand-color, $accent-color);
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    border-radius: $radius;
+    margin-top: 1rem;
+    transition: .1s background-color linear;
+
+    &:hover {
+      background-color: $bright-brand-color;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<header class="GlobalHeader">
+  <div class="container">
+    <%= link_to root_path do %>
+      <h1 class="GlobalHeader__logo">
+        CAMPFIRE
+        <span>Distributed Crowd Funding</span>
+      </h1>
+    <% end %>
+    <nav class="GlobalHeader__navigation">
+      <ul class="GlobalHeader__navigation__list">
+        <a href="" class="GlobalHeader__navigation__list__item GlobalHeader__navigation__list__item--selected"><li>Projects</li></a>
+      </ul>
+    </nav>
+    <% if logged_in? %>
+      <%= react_component 'components.HeaderUserInfo', { avatarImageUrl: 'https://avatars2.githubusercontent.com/u/1506738?s=460&v=4',currentUser: current_user } %>
+    <% else %>
+      <%= react_component 'components.LoginModal', authenticity_token: form_authenticity_token %>
+    <% end %>
+  </div>
+</header>

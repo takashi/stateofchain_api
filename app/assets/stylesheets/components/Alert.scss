@@ -1,0 +1,37 @@
+@mixin alertBase($color: $brand-color) {
+  visibility: visible;
+  position: fixed;
+  width: 100%;
+  top: 5rem;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  transition: linear .5s visibility;
+  z-index: 100;
+
+  .Alert__inner {
+    background-color: $color;
+    color: white;
+    border-radius: .3rem;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      margin: 0;
+      padding: .5rem 1rem;
+    }
+
+    &__closeButton {
+      cursor: pointer;
+      border-left: darken($color, 5%) 1px solid;
+    }
+  }
+}
+
+.SuccessAlert {
+  @include alertBase();
+}
+
+.ErrorAlert {
+  @include alertBase($accent-color)
+}

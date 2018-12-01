@@ -1,0 +1,25 @@
+<%= form_with model: @project, local: true, class: 'ProjectForm' do |f| %>
+  <div class="ProjectForm__author">
+    <img src="https://avatars2.githubusercontent.com/u/1506738?s=460&v=4" alt="">
+    <p>Takashi is creating...</p>
+  </div>
+  <div class="ProjectForm__group">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="ProjectForm__group">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="ProjectForm__group">
+    <%= f.label 'Target amount (BTC)' %>
+    <%= f.number_field :target_amount %>
+  </div>
+  <div class="ProjectForm__group">
+    <%= f.label :deadline %>
+    <%= f.datetime_select :deadline, minute_step: 60, start_year: 2018 %>
+  </div>
+  <div class="ProjectForm__group">
+    <%= f.submit 'Create Project', class: 'ProjectForm__submit' %>
+  </div>
+<% end %>

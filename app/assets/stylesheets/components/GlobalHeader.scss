@@ -1,0 +1,94 @@
+.GlobalHeader {
+    box-shadow: 0 0 8px 0 rgba($brand-color,0.3);
+    padding: 0 2rem;
+    min-height: 63px;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.3rem 0rem 0.9rem;
+  }
+
+  &__createProject {
+    margin-left: 1rem;
+    background-color: $brand-color;
+    border-radius: $radius;
+    padding: .5rem 1rem;
+    color: white;
+    font-weight: normal;
+  }
+
+  &__logo {
+    font-size: 1.2rem;
+    margin: 0;
+    color: $brand-color;
+
+    span {
+      font-size: .7rem;
+      margin-left: .5rem;
+      font-weight: normal;
+      color: $brand-dark;
+    }
+  }
+
+  &__navigation {
+    flex: 1;
+    margin-left: 2rem;
+    &__list {
+      display: flex;
+      height: 100%;
+
+      &__item {
+        margin-right: 1rem;
+        font-size: .9rem;
+        font-weight: bold;
+        color: $brand-dark;
+
+        &--selected {
+          position: relative;
+          color: $primary-font-color;
+          &:after {
+            content: "";
+            border-bottom: 2px solid $brand-color;
+            width: 100%;
+            position: absolute;
+            bottom: -1.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__userInfo {
+    display: flex;
+    justify-content: flex-end;
+    padding: .2rem 0;
+
+    &__item {
+      font-size: 1rem;
+      margin-left: .5rem;
+      font-size: .8rem;
+      padding: .5rem 1rem;
+      color: $brand-dark;
+      outline: none;
+
+      &__signup {
+        border: 1px solid $brand-color;
+        border-radius: $radius;
+      }
+    }
+  }
+}
+
+@media (max-width: $pc-width) {
+  .GlobalHeader {
+    &__navigation {
+      display: none;
+    }
+
+    .container {
+      padding: 1.3rem 1rem;
+    }
+  }
+}
