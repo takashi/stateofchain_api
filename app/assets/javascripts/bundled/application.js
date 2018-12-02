@@ -47203,7 +47203,7 @@ module.exports = function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createProject = exports.createMultisigAccount = exports.createAccount = exports.getAccount = void 0;
+exports.fund = exports.createProject = exports.createMultisigAccount = exports.createAccount = exports.getAccount = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -47401,6 +47401,37 @@ function () {
 }();
 
 exports.createProject = createProject;
+
+var fund =
+/*#__PURE__*/
+function () {
+  var _ref5 = (0, _asyncToGenerator2.default)(
+  /*#__PURE__*/
+  _regenerator.default.mark(function _callee5(psbt) {
+    return _regenerator.default.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return walletClient.execute("walletfundtocrowdfundingpsbt", [psbt]);
+
+          case 2:
+            return _context5.abrupt("return", _context5.sent);
+
+          case 3:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5, this);
+  }));
+
+  return function fund(_x3) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
+exports.fund = fund;
 },{"@babel/runtime/regenerator":"../../../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../../../node_modules/@babel/runtime/helpers/asyncToGenerator.js","bclient":"../../../node_modules/bclient/lib/bclient.js","domain":"../../../node_modules/domain-browser/source/index.js"}],"components/LoginModal.js":[function(require,module,exports) {
 "use strict";
 
@@ -49847,6 +49878,41 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "handleOnClick",
+    value: function () {
+      var _handleOnClick = (0, _asyncToGenerator2.default)(
+      /*#__PURE__*/
+      _regenerator.default.mark(function _callee2(e) {
+        var res;
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                e.preventDefault();
+                _context2.next = 3;
+                return (0, _bcoinWrapper.fund)(this.props.psbt);
+
+              case 3:
+                res = _context2.sent;
+                this.setState({
+                  psbt: res.psbt
+                });
+
+                this._form.submit();
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      return function handleOnClick(_x) {
+        return _handleOnClick.apply(this, arguments);
+      };
+    }()
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -49869,11 +49935,26 @@ function (_React$Component) {
         className: "LoginModal"
       }, _react.default.createElement("form", {
         className: "LoginModal__form",
-        action: "/users",
-        method: "post"
+        action: "/fund",
+        method: "post",
+        ref: function ref(f) {
+          _this2._form = f;
+        }
       }, _react.default.createElement("h2", {
         className: "LoginModal__heading"
       }, "Back their project"), _react.default.createElement("input", {
+        type: "hidden",
+        name: "authenticity_token",
+        value: this.props.authenticity_token
+      }), _react.default.createElement("input", {
+        type: "hidden",
+        name: "psbt",
+        value: this.state.psbt
+      }), _react.default.createElement("input", {
+        type: "hidden",
+        name: "project_id",
+        value: this.props.project_id
+      }), _react.default.createElement("input", {
         type: "hidden",
         name: "authenticity_token",
         value: this.props.authenticity_token
@@ -49888,7 +49969,8 @@ function (_React$Component) {
         type: "submit",
         value: "Back",
         className: "LoginModal__form__submit",
-        disabled: !this.state.account
+        disabled: !this.state.account,
+        onClick: this.handleOnClick.bind(this)
       }))));
     }
   }]);

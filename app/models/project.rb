@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   has_many :project_accounts
   belongs_to :user
 
-  enum status: { waiting: 0, started: 1 }
+  enum status: { waiting: 0, started: 1, finished: 2 }
 
   attr_accessor :participants
 

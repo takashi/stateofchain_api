@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post 'projects' => 'projects#create'
   post 'projects/join' => 'projects#join'
   post 'psbt' => 'projects#psbt'
+  post 'fund' => 'projects#fund'
 end

@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2018_12_01_174754) do
     t.bigint "user_id"
     t.integer "target_amount"
     t.integer "status", default: 0
-    t.text "psbt"
+    t.text "psbt", limit: 4294967295
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 

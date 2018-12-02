@@ -9,6 +9,6 @@
   <% if @project.waiting? %>
     <%= react_component 'components.StartButton', pubkeys: @project.project_accounts.pluck(:pubkey), project_id: @project.id, authenticity_token: form_authenticity_token %>
   <% else %>
-    <%= react_component 'components.BackButton' %>
+    <%= react_component 'components.BackButton', psbt: @project.psbt, project_id: @project.id, authenticity_token: form_authenticity_token %>
   <% end %>
 </div>

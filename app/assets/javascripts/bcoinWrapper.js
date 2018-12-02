@@ -66,3 +66,7 @@ export const createProject = async accName => {
     output
   ]);
 };
+
+export const fund = async psbt => {
+  return await walletClient.execute("walletfundtocrowdfundingpsbt", [psbt]);
+};

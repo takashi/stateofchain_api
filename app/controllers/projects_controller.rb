@@ -30,8 +30,19 @@ class ProjectsController < ApplicationController
     project = Project.find(project_join_params[:project_id])
     project.update({ psbt: params[:psbt] })
     project.started!
-    redirect_to project_path(project), notice: "You have successfully joined to project #{project.title}!"
+    redirect_to project_path(project), notice: "Your project successfully started!"
   end
+
+  def fund
+    project = Project.find(project_join_params[:project_id])
+    if params[:psbt] == project.psbt
+      project.finished!
+    else
+      project.update({ psbt: params[:psbt] })
+    end
+    redirect_to project_path(project), notice: "Thank you for backing project #{project.title}!"
+  end
+
 
   private
 
