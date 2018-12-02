@@ -53,7 +53,7 @@ export default class HeaderUserInfo extends React.Component {
           onClick={this.onClickUserIcon.bind(this)}
         >
           <Avatar
-            imageUrl={avatarImageUrl}
+            seed={currentUser.id}
             className="HeaderUserInfo__UserInfo__avatar"
           />
         </div>
@@ -67,7 +67,7 @@ export default class HeaderUserInfo extends React.Component {
         >
           <div className="HeaderUserInfo__UserInfoDropdown__user">
             <Avatar
-              imageUrl={avatarImageUrl}
+              seed={currentUser.id}
               className="HeaderUserInfo__UserInfo__avatar"
             />
             <div className="HeaderUserInfo__UserInfoDropdown__user__name">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_01_144259) do
+ActiveRecord::Schema.define(version: 2018_12_01_174754) do
 
   create_table "project_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "project_id"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2018_12_01_144259) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.integer "target_amount"
+    t.integer "status", default: 0
+    t.text "psbt"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 

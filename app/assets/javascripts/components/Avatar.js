@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
+import makeBlockie from "ethereum-blockies-base64";
 
-const Avatar = ({ imageUrl, className }) => {
-  return (
-    <img
-      src={imageUrl}
-      className={className ? className : 'globalHeader__UserInfo__avatar'}
-    />
-  )
-}
+const Avatar = ({ imageUrl, seed, className }) => {
+  if (!imageUrl) {
+    imageUrl = makeBlockie((seed * 1000).toString(16) + "wowowowowowowwowo");
+  }
 
-export default Avatar
+  return <img src={imageUrl} />;
+};
+
+export default Avatar;

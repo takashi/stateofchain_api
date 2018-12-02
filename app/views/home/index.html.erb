@@ -1,10 +1,10 @@
 <div class="Projects">
-  <% Project.all.each do |project| %>
+  <% Project.all.order(created_at: :desc).each do |project| %>
     <%= link_to project_path(project) do %>
       <article class="Project">
         <div class="Project__author">
-          <img src="https://avatars2.githubusercontent.com/u/1506738?s=460&v=4" alt="">
-          <p>Takashi needs your help for...</p>
+          <%= react_component 'components.Avatar', { seed: project.user_id } %>
+          <p><%= project.user.name %> needs your help for...</p>
         </div>
         <h2 class="Project__title"><%= project.title %></h2>
         <p class="Project__description"><%= project.description %></p>

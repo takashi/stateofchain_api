@@ -26,9 +26,10 @@
         color: $secondary-font-color;
       }
 
-      input[type="email"], input[type="password"], input[type="number"] {
+      input[type="email"], input[type="password"], input[type="number"], input[type="text"] {
         width: 100%;
         padding: 1rem;
+        margin-bottom: .5rem;
         outline: none;
         border-radius: $radius;
         border: 1px solid $border-color;

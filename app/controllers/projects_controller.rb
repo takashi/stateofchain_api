@@ -11,21 +11,27 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
+    @project.participants = params[:participants]
     if @project.save
       redirect_to :root, notice: 'Your projet has successfully created.'
     end
   end
 
   def join
-    binding.pry
     project = Project.find(project_join_params[:project_id])
     project.project_accounts.create({
       pubkey: project_join_params[:pubkey],
       user: current_user
     })
-    redirect_to :root, notice: 'You have successfully joined to project #{project.title}!'
+    redirect_to :root, notice: "You have successfully joined to project #{project.title}!"
   end
 
+  def psbt
+    project = Project.find(project_join_params[:project_id])
+    project.update({ psbt: params[:psbt] })
+    project.started!
+    redirect_to project_path(project), notice: "You have successfully joined to project #{project.title}!"
+  end
 
   private
 

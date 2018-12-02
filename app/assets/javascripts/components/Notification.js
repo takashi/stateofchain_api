@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 import { createAccount } from "../bcoinWrapper";
 import ActionCable from "actioncable";
+import Avatar from "../components/Avatar";
 
 Modal.setAppElement("body");
 
@@ -32,11 +33,12 @@ export default class Notification extends React.Component {
       },
 
       received: data => {
-        console.log(JSON.parse(data.message));
+        console.log(JSON.parse(data.project));
 
         this.setState({
           isModalOpen: true,
-          project: JSON.parse(data.message)
+          project: JSON.parse(data.project),
+          user: JSON.parse(data.user)
         });
       }
     });
@@ -68,11 +70,12 @@ export default class Notification extends React.Component {
             >
               <h2 className="Notification__heading">
                 <div className="Notification__author">
-                  <img
-                    src="https://avatars2.githubusercontent.com/u/1506738?s=460&v=4"
-                    alt=""
-                  />
-                  <p>Takashi wants you to join project as OWNER</p>
+                  {this.state.project && (
+                    <Avatar seed={this.state.project.user_id} />
+                  )}
+                  <p>
+                    {this.state.user.name} wants you to join project as OWNER
+                  </p>
                 </div>
               </h2>
               <div className="Notification__project">

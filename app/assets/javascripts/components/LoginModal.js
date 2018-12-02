@@ -70,6 +70,8 @@ export default class LoginModal extends React.Component {
               <div className="LoginModal__form__group">
                 <label htmlFor="email">Email</label>
                 <input type="email" name="user[email]" autoComplete="email" />
+                <label htmlFor="name">Name</label>
+                <input type="text" name="user[name]" />
                 <label htmlFor="pubkey" style={{ marginTop: ".5rem" }}>
                   Your Public Key is
                 </label>

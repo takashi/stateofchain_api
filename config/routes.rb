@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/projects/:id' => 'projects#show', as: :project
   post 'projects' => 'projects#create'
   post 'projects/join' => 'projects#join'
+  post 'psbt' => 'projects#psbt'
 end

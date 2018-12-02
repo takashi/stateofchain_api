@@ -1,7 +1,7 @@
 <%= form_with model: @project, local: true, class: 'ProjectForm' do |f| %>
   <div class="ProjectForm__author">
-    <img src="https://avatars2.githubusercontent.com/u/1506738?s=460&v=4" alt="">
-    <p>Takashi is creating...</p>
+    <%= react_component 'components.Avatar', { seed: current_user.id } %>
+    <p><%= current_user.name %> is creating...</p>
   </div>
   <div class="ProjectForm__group">
     <%= f.label :title %>
@@ -14,6 +14,10 @@
   <div class="ProjectForm__group">
     <%= f.label 'Target amount (BTC)' %>
     <%= f.number_field :target_amount %>
+  </div>
+  <div class="ProjectForm__group">
+    <%= f.label 'Participants' %>
+    <%= react_component 'components.UserSelect', { users: User.where.not(id: current_user.id).map{ |user| { value: user.id, label: user.email } } } %>
   </div>
   <div class="ProjectForm__group">
     <%= f.label :deadline %>
